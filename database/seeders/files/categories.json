@@ -1,0 +1,45 @@
+[
+    {
+        "title": "Elektronik",
+        "children": [
+            {
+                "title": "Bilgisayar"
+            },
+            {
+                "title": "Telefon"
+            },
+            {
+                "title": "Beyaz Eşya"
+            }
+        ]
+    },
+    {
+        "title": "Moda",
+        "children": [
+            {
+                "title": "Kadın Giyim"
+            },
+            {
+                "title": "Erkek Giyim"
+            },
+            {
+                "title": "Çocuk Giyim"
+            }
+        ]
+    },
+    {
+        "title": "Ev & Yaşam"
+    },
+    {
+        "title": "Kozmetik"
+    },
+    {
+        "title": "Ayakkabı & Çanta"
+    },
+    {
+        "title": "Saat & Aksesuar"
+    },
+    {
+        "title": "Spor & Outdoor"
+    }
+]
