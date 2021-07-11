@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-
-Route::get('categories', function () {
-    return view('welcome');
-});
+//
+//Route::get('categories', function () {
+//    return view('welcome');
+//});
 
 Route::any('{slug}', function () {
     return view('welcome');

@@ -1,5 +1,5 @@
 <template>
     <div>
-        <h1>Hello From App.Vue - ref</h1>
+        <router-view></router-view>
     </div>
 </template>
