@@ -8,7 +8,7 @@ window.Vue = require('vue')
 import Router from './src/router'
 
 // axios
-import axios from 'axios'
+import axios from './src/axios.js'
 
 Vue.prototype.$http = axios
 

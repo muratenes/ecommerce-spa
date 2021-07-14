@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios from '@/axios'
 
-const makeUrl = path => `/api/categories/${path}`
+const makeUrl = path => `/categories/${path}`
 
 export default {
   list () {
