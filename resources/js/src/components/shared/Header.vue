@@ -73,9 +73,9 @@
         <div class="header-middle">
             <div class="container">
                 <div class="header-left">
-                    <a href="index-2.html" class="logo">
-                        <img src="assets/images/logo.png" alt="Porto Logo">
-                    </a>
+                    <router-link :to="{ name : 'home' }" tag="a" class="logo">
+                        <img src="assets/images/logo.png" alt="Logo title">
+                    </router-link>
                 </div><!-- End .header-left -->
 
                 <div class="header-center">
@@ -195,7 +195,7 @@
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
                         <router-link :to="{ name : 'home' }" tag="li" active-class="active">
-                            <a>Home</a>
+                            <a>Anasayfa</a>
                         </router-link>
                         <router-link :to="{ name : 'categories' }" tag="li" active-class="active">
                             <a>Kategoriler</a>
@@ -289,7 +289,6 @@
                                 <li><a href="#">Footer Types</a></li>
                             </ul>
                         </li>
-                        <li class="float-right"><a href="https://1.envato.market/DdLk5" target="_blank">Buy Porto!</a></li>
                         <li class="float-right"><a href="#">Special Offer!</a></li>
                     </ul>
                 </nav>

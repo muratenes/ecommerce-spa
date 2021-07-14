@@ -122,7 +122,6 @@
                 </li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="#">Special Offer!<span class="tip tip-hot">Hot!</span></a></li>
-                <li><a href="https://1.envato.market/DdLk5" target="_blank">Buy Porto!</a></li>
             </ul>
         </nav><!-- End .mobile-nav -->
 
