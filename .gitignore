@@ -14,6 +14,8 @@ yarn-error.log
 /.idea
 /.vscode
 /storage/app/public
+/public/js/resources_js*
+/public/js/app.js
 /.vagrant
 .php-cs-fixer.cache
 

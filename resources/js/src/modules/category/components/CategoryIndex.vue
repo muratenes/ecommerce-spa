@@ -6,10 +6,6 @@
 
 <script>
 export default {
-    name: "index.vue"
+    name: "CategoryIndex.vue"
 }
 </script>
-
-<style scoped>
-
-</style>
