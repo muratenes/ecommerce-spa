@@ -17,11 +17,5 @@ export default {
     computed: {
         ...mapGetters('category', ['getCategories'])
     },
-    methods: {
-        ...mapActions('category', ['list'])
-    },
-    created() {
-        this.list()
-    }
 }
 </script>

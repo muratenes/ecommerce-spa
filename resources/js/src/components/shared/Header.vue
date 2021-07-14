@@ -254,33 +254,13 @@
                             </div><!-- End .megamenu -->
                         </li>
                         <li>
-                            <a href="#" class="sf-with-ul">Pages</a>
-
+                            <a href="#" class="sf-with-ul">Kategoriler</a>
                             <ul>
-                                <li><a href="cart.html">Shopping Cart</a></li>
-                                <li><a href="#">Checkout</a>
-                                    <ul>
-                                        <li><a href="checkout-shipping.html">Checkout Shipping</a></li>
-                                        <li><a href="checkout-shipping-2.html">Checkout Shipping 2</a></li>
-                                        <li><a href="checkout-review.html">Checkout Review</a></li>
-                                    </ul>
+                                <li v-for="category in getCategories">
+                                    <router-link tag="a" :to="{name : 'categories'}">
+                                        {{ category.title }}
+                                    </router-link>
                                 </li>
-                                <li><a href="#">Dashboard</a>
-                                    <ul>
-                                        <li><a href="dashboard.html">Dashboard</a></li>
-                                        <li><a href="my-account.html">My Account</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="single.html">Blog Post</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                                <li><a href="#" class="login-link">Login</a></li>
-                                <li><a href="forgot-password.html">Forgot Password</a></li>
                             </ul>
                         </li>
                         <li><a href="#" class="sf-with-ul">Features</a>
@@ -298,8 +278,19 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
+
 export default {
-    name: "Header.vue"
+    name: "Header.vue",
+    computed: {
+        ...mapGetters('category', ['getCategories'])
+    },
+    methods: {
+        ...mapActions('category', ['list'])
+    },
+    created() {
+        this.list()
+    }
 }
 </script>
 
