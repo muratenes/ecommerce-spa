@@ -1,5 +1,5 @@
 export default {
-    component: () => import('./components/index'),
+    component: () => import('./components/CategoryIndex'),
     meta: {
         breadcrumb: [
             {title: 'Home', url: '/'},

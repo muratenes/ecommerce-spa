@@ -4,27 +4,31 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 // components
-import Category from './modules/category/components/index'
-import CategoryDetail from './modules/category/components/detail'
+import Home from "./components/home/Home";
 
 // routes
-// import Category from './modules/category/router'
+import Category from './modules/category/router'
 
-
-const routes = [
-    {
-        path: "/categories",
-        component: Category,
-        name: 'categories'
-    },
-    {
-        path: "/categories/1",
-        component: CategoryDetail,
-        name: 'categories.show'
-    }
-]
 
 export default new Router({
-    mode : 'history',
-    routes
+    // base: '/',
+    mode: 'history',
+    routes: [
+        {
+            children: [
+                {
+                    path: "/",
+                    component: Home,
+                    name: 'home'
+                },
+                Category
+            ],
+
+            component: () => import('./components/App'),
+            // =============================================================================
+            // MAIN LAYOUT ROUTES
+            // =============================================================================
+            path: ''
+        }
+    ]
 })
