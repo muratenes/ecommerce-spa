@@ -1,14 +1,13 @@
 export default {
+    path: '/categories',
     component: () => import('./components/CategoryIndex'),
-    meta: {
-        breadcrumb: [
-            {title: 'Home', url: '/'},
-            {active: true, title: 'Categories'}
-        ],
-        page: {
-            title: 'Categories'
+    name: 'categories.index',
+    children: [
+        {
+            path: '', component: () => import('./components/CategoryList'), name: 'categories.list'
+        },
+        {
+            path: ':slug', component: () => import('./components/CategoryDetail'), name: 'categories.show'
         }
-    },
-    name: 'categories',
-    path: '/categories'
+    ]
 }

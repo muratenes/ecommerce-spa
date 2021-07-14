@@ -197,67 +197,14 @@
                         <router-link :to="{ name : 'home' }" tag="li" active-class="active">
                             <a>Anasayfa</a>
                         </router-link>
-                        <router-link :to="{ name : 'categories' }" tag="li" active-class="active">
+                        <router-link :to="{ name : 'categories.list' }" tag="li" active-class="active">
                             <a>Kategoriler</a>
                         </router-link>
-                        <li class="megamenu-container">
-                            <a href="product.html" class="sf-with-ul">Products</a>
-                            <div class="megamenu">
-                                <div class="row">
-                                    <div class="col-lg-8">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="menu-title">
-                                                    <a href="#">Variations</a>
-                                                </div>
-                                                <ul>
-                                                    <li><a href="product.html">Horizontal Thumbnails</a></li>
-                                                    <li><a href="product-full-width.html">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
-                                                    <li><a href="product.html">Inner Zoom</a></li>
-                                                    <li><a href="product-addcart-sticky.html">Addtocart Sticky</a></li>
-                                                    <li><a href="product-sidebar-left.html">Accordion Tabs</a></li>
-                                                </ul>
-                                            </div><!-- End .col-lg-4 -->
-                                            <div class="col-lg-4">
-                                                <div class="menu-title">
-                                                    <a href="#">Variations</a>
-                                                </div>
-                                                <ul>
-                                                    <li><a href="product-sticky-tab.html">Sticky Tabs</a></li>
-                                                    <li><a href="product-simple.html">Simple Product</a></li>
-                                                    <li><a href="product-sidebar-left.html">With Left Sidebar</a></li>
-                                                </ul>
-                                            </div><!-- End .col-lg-4 -->
-                                            <div class="col-lg-4">
-                                                <div class="menu-title">
-                                                    <a href="#">Product Layout Types</a>
-                                                </div>
-                                                <ul>
-                                                    <li><a href="product.html">Default Layout</a></li>
-                                                    <li><a href="product-extended-layout.html">Extended Layout</a></li>
-                                                    <li><a href="product-full-width.html">Full Width Layout</a></li>
-                                                    <li><a href="product-grid-layout.html">Grid Images Layout</a></li>
-                                                    <li><a href="product-sticky-both.html">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
-                                                    <li><a href="product-sticky-info.html">Sticky Right Side Info</a></li>
-                                                </ul>
-                                            </div><!-- End .col-lg-4 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .col-lg-8 -->
-                                    <div class="col-lg-4">
-                                        <div class="banner">
-                                            <a href="#">
-                                                <img src="assets/images/menu-banner.jpg" alt="Menu banner" class="product-promo">
-                                            </a>
-                                        </div><!-- End .banner -->
-                                    </div><!-- End .col-lg-4 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .megamenu -->
-                        </li>
                         <li>
                             <a href="#" class="sf-with-ul">Kategoriler</a>
                             <ul>
                                 <li v-for="category in getCategories">
-                                    <router-link tag="a" :to="{name : 'categories'}">
+                                    <router-link tag="a" :to="{name : 'categories.show',params : {slug : category.slug}}">
                                         {{ category.title }}
                                     </router-link>
                                 </li>

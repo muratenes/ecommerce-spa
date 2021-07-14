@@ -20,6 +20,7 @@ Route::view('/', 'welcome');
 //    return view('welcome');
 //});
 
-Route::any('{slug}', function () {
+
+Route::get('{any}', function () {
     return view('welcome');
-});
+})->where('any','.*');
