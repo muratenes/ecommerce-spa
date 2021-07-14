@@ -3,6 +3,6 @@ export default {
         return state.categories
     },
     getCategory(state) {
-
+        return state.category;
     }
 }

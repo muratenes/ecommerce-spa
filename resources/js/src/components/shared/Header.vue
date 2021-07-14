@@ -74,7 +74,7 @@
             <div class="container">
                 <div class="header-left">
                     <router-link :to="{ name : 'home' }" tag="a" class="logo">
-                        <img src="assets/images/logo.png" alt="Logo title">
+                        <img src="/assets/images/logo.png" alt="Logo title">
                     </router-link>
                 </div><!-- End .header-left -->
 
