@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
             $slug = \Illuminate\Support\Str::slug($productName);
             $imageName = $slug . '.jpg';
             Storage::put('public/products/' . $imageName, file_get_contents(
-                'https://source.unsplash.com/random/600x800?sig=incrementingIdentifie'
+                'https://source.unsplash.com/random/400x600?sig=incrementingIdentifie'
             ));
 
             $product = Product::create([

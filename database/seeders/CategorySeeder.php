@@ -22,6 +22,7 @@ class CategorySeeder extends Seeder
                 'title' => $category['title'],
             ],[
                 'slug'  => Str::slug($category['title']),
+                'short_description'  => $category['short_description'] ?? '',
             ]);
 //            if (isset($category['children'])) {
 //                foreach ($category['children'] as $child) {

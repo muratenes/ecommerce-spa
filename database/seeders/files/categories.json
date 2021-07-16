@@ -1,6 +1,7 @@
 [
     {
         "title": "Elektronik",
+        "short_description"  : "Elektronik kategorisindeki binlerce ürünü keşfet.",
         "children": [
             {
                 "title": "Bilgisayar"
@@ -15,6 +16,7 @@
     },
     {
         "title": "Moda",
+        "short_description"  : "Moda kategorisindeki binlerce ürünü keşfet.",
         "children": [
             {
                 "title": "Kadın Giyim"
@@ -28,18 +30,23 @@
         ]
     },
     {
-        "title": "Ev & Yaşam"
+        "title": "Ev & Yaşam",
+        "short_description"  : "Elektronik kategorisindeki binlerce ürünü keşfet."
     },
     {
-        "title": "Kozmetik"
+        "title": "Kozmetik",
+        "short_description"  : "Kozmetik kategorisindeki binlerce ürünü keşfet."
     },
     {
-        "title": "Ayakkabı & Çanta"
+        "title": "Ayakkabı & Çanta",
+        "short_description"  : "Ayakkabı & Çanta kategorisindeki binlerce ürünü keşfet."
     },
     {
-        "title": "Saat & Aksesuar"
+        "title": "Saat & Aksesuar",
+        "short_description"  : "Saat & Aksesuar kategorisindeki binlerce ürünü keşfet."
     },
     {
-        "title": "Spor & Outdoor"
+        "title": "Spor & Outdoor",
+        "short_description"  : "Spor & Outdoor kategorisindeki binlerce ürünü keşfet."
     }
 ]
