@@ -11,9 +11,11 @@ export default {
     },
 
 
-    async getCategoryBySlug({dispatch}, slug) {
+    async getCategoryBySlug({dispatch,commit}, slug) {
         try {
-            return await request.getCategoryBySlug(slug)
+            const {data} = await request.getCategoryBySlug(slug)
+            commit('SET_CATEGORY', data)
+            return data;
         } catch (error) {
             if (error.response) dispatch('error', error.response.data, {root: true})
         }
