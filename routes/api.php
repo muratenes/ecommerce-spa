@@ -24,6 +24,7 @@ Route::resource('categories', \App\Http\Controllers\Api\CategoryController::clas
 Route::group(['namespace' => 'Api'], function () {
     // products
     Route::group(['prefix' => 'products'], function () {
+        Route::get('{product:slug}', [\App\Http\Controllers\Api\ProductController::class, 'show']);
         Route::get('getProductsByCategory/{category:slug}', [\App\Http\Controllers\Api\ProductController::class, 'getProductsByCategory']);
     });
 });

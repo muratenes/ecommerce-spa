@@ -7,6 +7,12 @@ use App\Models\Product;
 
 class ProductController extends ApiController
 {
+
+    public function show(Product $product)
+    {
+        return $product;
+    }
+
     /**
      * get products by category
      *

@@ -60,9 +60,9 @@
                             <div class="col-6 col-md-4" v-for="product in products">
                                 <div class="product-default">
                                     <figure>
-                                        <a href="product.html">
+                                        <router-link tag="a" :to="{ name : 'products.detail',params : {slug : product.slug}}">
                                             <img :src="$root.productImage(product.image)">
-                                        </a>
+                                        </router-link>
                                     </figure>
                                     <div class="product-details">
                                         <div class="ratings-container">
@@ -411,7 +411,6 @@ export default {
     mounted() {
         this.$store.dispatch('category/getCategoryBySlug', this.$route.params.slug)
         this.getProductsByCategorySlug(this.$route.params.slug)
-        console.log(this.$root.PRODUCT.IMAGE_PREFIX)
     },
 }
 </script>

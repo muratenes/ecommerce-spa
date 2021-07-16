@@ -6,9 +6,6 @@ export default {
             }
         }
     },
-    created: function () {
-        this.hello()
-    },
     methods: {
         productImage: function (imageName) {
             return this.PRODUCT.IMAGE_PREFIX + imageName;

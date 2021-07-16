@@ -1,7 +1,5 @@
 <template>
-    <h1>
-        Product Index
-    </h1>
+    <router-view/>
 </template>
 
 <script>
