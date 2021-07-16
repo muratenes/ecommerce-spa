@@ -8,6 +8,7 @@ import Home from "./components/home/Home";
 
 // routes
 import Category from '@modules/category/router'
+import Product from '@modules/product/router'
 
 
 const routes = [
@@ -16,7 +17,8 @@ const routes = [
         component: Home,
         name: 'home'
     },
-    Category
+    Category,
+    Product
 ]
 
 export default new Router({

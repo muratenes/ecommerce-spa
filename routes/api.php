@@ -18,5 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+// categories
 Route::resource('categories', \App\Http\Controllers\Api\CategoryController::class)->only(['index', 'show']);
+
+Route::group(['namespace' => 'Api'], function () {
+    // products
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('getProductsByCategory/{category:slug}', [\App\Http\Controllers\Api\ProductController::class, 'getProductsByCategory']);
+    });
+});
+

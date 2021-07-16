@@ -19,6 +19,7 @@ mix.js('resources/js/app.js', 'public/js')
                 '@': path.resolve(__dirname, 'resources/js/src'),
                 '@modules': path.resolve(__dirname, 'resources/js/src/modules'),
                 '@category': path.resolve(__dirname, 'resources/js/src/modules/category'),
+                '@product': path.resolve(__dirname, 'resources/js/src/modules/product'),
                 '@store': path.resolve(__dirname, 'resources/js/src/modules/store'),
             }
         }

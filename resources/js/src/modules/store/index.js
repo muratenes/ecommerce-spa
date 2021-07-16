@@ -13,6 +13,7 @@ import actions from './actions'
 
 // modules
 import category from '@category/store'
+import product from '@product/store'
 
 
 Vue.use(Vuex)
@@ -22,6 +23,7 @@ export default new Vuex.Store({
   getters,
   modules: {
       category,
+      product,
   },
   mutations,
   state,

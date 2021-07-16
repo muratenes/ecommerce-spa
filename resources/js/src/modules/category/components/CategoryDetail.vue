@@ -14,7 +14,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index-2.html"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="#">Kategoriler</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ getCategory.title }}</li>
                     </ol>
@@ -697,20 +697,24 @@ import {mapActions, mapGetters} from "vuex";
 
 export default {
     name: "detail.vue",
+    data() {
+        return {
+            products: []
+        }
+    },
     computed: {
-        ...mapGetters('category', ['getCategory','getCategories']),
+        ...mapGetters('category', ['getCategory', 'getCategories']),
         // ...mapGetters('category', ['getCategories'])
     },
-    methods: {
-        ...mapActions('category', ['getCategoryBySlug'])
-    },
-    beforeRouteUpdate(to, from, next) {
-        this.$store.dispatch('category/getCategoryBySlug', to.params.slug)
+    async beforeRouteUpdate(to, from, next) {
+        await this.$store.dispatch('category/getCategoryBySlug', to.params.slug)
+        const products = await this.$store.dispatch('product/getProductsByCategorySlug', to.params.slug)
+        console.log(products)
         next()
     },
     created() {
-        // this.getCategoryBySlug(this.$route.params.slug)
         this.$store.dispatch('category/getCategoryBySlug', this.$route.params.slug)
+        this.$store.dispatch('product/getProductsByCategorySlug', this.$route.params.slug)
     },
 }
 </script>
