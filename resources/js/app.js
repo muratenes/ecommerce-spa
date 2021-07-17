@@ -19,6 +19,8 @@ import store from '@modules/store'
 // components
 Vue.component('app', require('./src/admin/App.vue').default)
 
+// filters
+import './src/filters/filters'
 
 // mixins
 import mixins from './src/mixins'
