@@ -1,7 +1,6 @@
 export default {
-    path: '/categories',
+    path: '/panel/categories',
     component: () => import('./components/CategoryIndex'),
-    name: 'admin.categories.index',
     children: [
         {
             path: '', component: () => import('./components/CategoryList'), name: 'admin.categories.list'

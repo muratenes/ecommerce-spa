@@ -5,7 +5,7 @@ import Vue from 'vue'
 window.Vue = require('vue')
 
 // Vue Router
-import Router from './src/router'
+import AdminRouter from './src/admin/router'
 
 
 // axios
@@ -22,27 +22,10 @@ Vue.component('app', require('./src/admin/App.vue').default)
 
 // mixins
 import mixins from './src/mixins'
-console.log(mixins)
-var myMixin = {
-    data() {
-        return {
-            version: 1111
-        }
-    },
-    created: function () {
-        this.hello()
-    },
-    methods: {
-        hello: function () {
-            console.log('hello from mixin!')
-        }
-    }
-}
-
 
 const app = new Vue({
     el: '#app',
-    router: Router,
+    router: AdminRouter,
     store,
     mixins: mixins
 })

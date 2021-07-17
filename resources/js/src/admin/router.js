@@ -4,24 +4,28 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 // components
-import Home from "./components/home/Home";
+import Admin from "./components/home/Admin";
 
 // routes
-import Category from '@modules/category/router'
-import Product from '@modules/product/router'
+import Category from '@admin/modules/category/router'
 
 
 const routes = [
     {
-        path: "/",
-        component: Home,
-        name: 'home'
+        path: "/panel",
+        name: 'panel.dashboard',
+        component: Admin,
+        children: [
+            {
+                path: '', component: () => import('./components/home/Dashboard'), name: 'admin.dashboard'
+            },
+            Category,
+        ]
     },
-    Category,
-    Product
+
 ]
 
 export default new Router({
-    mode : 'history',
+    mode: 'history',
     routes
 })

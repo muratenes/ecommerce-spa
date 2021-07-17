@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h1>Category index</h1>
+        <h1>Admin CategoryList.vue</h1>
         <ul>
             <li v-for="category in getCategories">
-                <router-link tag="a" :to="{name : 'categories.show',params : {slug : category.slug}}">
+                <router-link tag="a" :to="{name : 'admin.categories.show',params : {slug : category.slug}}">
                     {{ category.title }}
                 </router-link>
             </li>
