@@ -25,6 +25,14 @@ import './src/filters/filters'
 // mixins
 import mixins from './src/mixins'
 
+// vuesax
+import Vuesax from 'vuesax'
+
+import 'vuesax/dist/vuesax.css' //Vuesax styles
+Vue.use(Vuesax)
+
+import 'material-icons/iconfont/material-icons.css';
+
 const app = new Vue({
     el: '#app',
     router: AdminRouter,

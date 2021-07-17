@@ -1,28 +1,39 @@
 <template>
     <div>
         <breadcrumb title="Categories"/>
-        <h1>Admin CategoryList.vue</h1>
-        <ul>
-            <li v-for="category in getCategories">
-                <router-link tag="a" :to="{name : 'admin.categories.show',params : {slug : category.slug}}">
-                    {{ category.title }}
-                </router-link>
-            </li>
-        </ul>
+        <d-table
+            url="/panel/tables/categories"
+            :searchable="true"
+            :columns="columns"
+            :perPageItem="2"
+        >
+            <template v-slot:created_at="{data}">
+                <p> {{ data.created_at|created_at }} </p>
+            </template>
+
+        </d-table>
     </div>
 </template>
 
 <script>
 import Breadcrumb from "../../../components/shared/Breadcrumb";
 import {mapGetters} from "vuex";
+import Table from "../../../components/shared/Table";
+import columns from "../columns/categories"
 
 export default {
     name: "CategoryIndex.vue",
+    data() {
+        return {
+            columns
+        }
+    },
     computed: {
         ...mapGetters('category', ['getCategories'])
     },
     components: {
-        Breadcrumb
+        Breadcrumb,
+        dTable: Table
     }
 }
 </script>
