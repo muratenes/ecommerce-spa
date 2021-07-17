@@ -1,17 +1,21 @@
 <template>
     <div>
         <breadcrumb title="Categories"/>
-        <d-table
-            url="/panel/tables/categories"
-            :searchable="true"
-            :columns="columns"
-            :perPageItem="2"
-        >
-            <template v-slot:created_at="{data}">
-                <p> {{ data.created_at|created_at }} </p>
-            </template>
+        <section class="content">
+            <div class="container-fluid">
+                <d-table
+                    url="/panel/tables/categories"
+                    :searchable="true"
+                    :columns="columns"
+                    :perPageItem="2"
+                >
+                    <template v-slot:created_at="{data}">
+                        <p> {{ data.created_at|created_at }} </p>
+                    </template>
 
-        </d-table>
+                </d-table>
+            </div>
+        </section>
     </div>
 </template>
 
