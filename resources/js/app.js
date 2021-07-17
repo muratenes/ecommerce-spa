@@ -17,7 +17,7 @@ Vue.prototype.$http = axios
 import store from '@modules/store'
 
 // components
-Vue.component('app', require('./src/components/App').default)
+Vue.component('app', require('./src/admin/App.vue').default)
 
 
 // mixins
