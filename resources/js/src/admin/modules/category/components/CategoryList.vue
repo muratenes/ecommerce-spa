@@ -1,5 +1,6 @@
 <template>
     <div>
+        <breadcrumb title="Categories"/>
         <h1>Admin CategoryList.vue</h1>
         <ul>
             <li v-for="category in getCategories">
@@ -12,12 +13,16 @@
 </template>
 
 <script>
-import { mapGetters} from "vuex";
+import Breadcrumb from "../../../components/shared/Breadcrumb";
+import {mapGetters} from "vuex";
 
 export default {
     name: "CategoryIndex.vue",
     computed: {
         ...mapGetters('category', ['getCategories'])
     },
+    components: {
+        Breadcrumb
+    }
 }
 </script>
