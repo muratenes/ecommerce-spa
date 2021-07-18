@@ -27,9 +27,27 @@ import mixins from './src/mixins'
 
 // vuesax
 import Vuesax from 'vuesax'
-
 import 'vuesax/dist/vuesax.css' //Vuesax styles
 Vue.use(Vuesax)
+
+// Vue localization
+import messagesTR from './src/languages/tr/message'
+import messagesEN from './src/languages/en/message'
+
+import VueI18n from 'vue-i18n'
+Vue.use(VueI18n)
+
+const messages = {
+    en: { message: messagesEN },
+    tr: { message: messagesTR }
+}
+
+const i18n = new VueI18n({
+    fallbackLocale: 'tr',
+    formatFallbackMessages: true,
+    locale: localStorage.getItem('language') || 'tr',
+    messages
+})
 
 import 'material-icons/iconfont/material-icons.css';
 
@@ -37,5 +55,6 @@ const app = new Vue({
     el: '#app',
     router: AdminRouter,
     store,
+    i18n,
     mixins: mixins
 })

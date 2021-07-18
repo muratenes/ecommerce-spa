@@ -21,6 +21,7 @@
         "babel-preset-es2015": "^6.24.1",
         "material-icons": "^0.7.6",
         "vue": "^2.6.14",
+        "vue-i18n": "^8.25.0",
         "vue-router": "^3.5.2",
         "vuesax": "^3.12.2",
         "vuex": "^3.6.2"

@@ -17,7 +17,7 @@
                     :key="index"
                     :sort-key="column.data"
                 >
-                    {{ (`${column.label}`) }}
+                    {{ $t(`${column.label}`) }}
                 </vs-th>
 
                 <vs-th v-if="hasActionsSlot()">
