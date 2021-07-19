@@ -1,6 +1,6 @@
 // axios
 import axios from 'axios'
-import store from '@store'
+import store from '@admin/modules/store'
 
 const accessToken = `Bearer ${localStorage.getItem('accessToken')}`
 

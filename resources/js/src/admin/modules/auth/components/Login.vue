@@ -8,7 +8,7 @@
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="../../index3.html" method="post">
+                <div id="loginForm">
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email" v-model="user.email">
                         <div class="input-group-append">
@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input type="checkbox" id="remember" v-model="user.remember_me">
+                                <input type="checkbox" id="remember">
                                 <label for="remember">
                                     Remember Me
                                 </label>
@@ -40,7 +40,7 @@
                         </div>
                         <!-- /.col -->
                     </div>
-                </form>
+                </div>
 
                 <div class="social-auth-links text-center mt-2 mb-3">
                     <a href="#" class="btn btn-block btn-primary">
@@ -76,13 +76,19 @@ export default {
             user: {
                 email: null,
                 password: null,
-                remember_me: false,
             }
         }
     },
     methods: {
-        login() {
-            console.log(this.user)
+        async login() {
+            try {
+                await this.$store.dispatch('auth/login', this.user)
+                await this.$store.dispatch('auth/me')
+                window.location.href = "/panel"
+                // await this.$router.push({ name: 'admin.dashboard' })
+            } catch (error) {
+                console.error(error)
+            }
         }
     },
     mounted() {

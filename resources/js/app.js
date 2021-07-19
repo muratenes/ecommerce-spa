@@ -17,7 +17,7 @@ import axios from './src/axios.js'
 Vue.prototype.$http = axios
 
 // Store
-import store from '@modules/store'
+import store from '@admin/modules/store'
 
 // components
 // Vue.component('app', require('./src/admin/App.vue').default)
@@ -53,6 +53,19 @@ const i18n = new VueI18n({
 })
 
 import 'material-icons/iconfont/material-icons.css';
+
+
+// Global Route Auth Middleware
+AdminRouter.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (! localStorage.getItem('accessToken')) {
+            next({name: 'admin.login'})
+        }
+        next()
+    } else {
+        next()
+    }
+})
 
 const app = new Vue({
     el: '#app',

@@ -18,14 +18,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// auth
-Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
-Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
-Route::post('/me', [\App\Http\Controllers\Api\AuthController::class, 'me'])->middleware('auth:sanctum');
+// Auth
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
+    Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
+    Route::post('/me', [\App\Http\Controllers\Api\AuthController::class, 'me'])->middleware('auth:sanctum');
+});
 
 
-Route::group(['namespace' => 'Api', 'prefix' => 'panel','middleware' => 'auth:sanctum'], function () {
-// categories
+Route::group(['namespace' => 'Api', 'prefix' => 'panel', 'middleware' => 'auth:sanctum'], function () {
+    // categories
     Route::resource('categories', \App\Http\Controllers\Api\CategoryController::class)->only(['index', 'show']);
 
 

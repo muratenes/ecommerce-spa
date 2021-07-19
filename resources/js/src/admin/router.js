@@ -22,8 +22,9 @@ export default new Router({
         // =============================================
         {
             path: '',
-            name: 'panel.dashboard',
+            name: 'admin.dashboard',
             component: Admin,
+            meta: { requiresAuth: true },
             children: [
                 {
                     path: '', component: () => import('./components/home/Dashboard'), name: 'admin.dashboard'
