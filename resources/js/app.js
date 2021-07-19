@@ -1,6 +1,9 @@
 require('./bootstrap');
 import Vue from 'vue'
 
+// App.Vue
+import App from './src/admin/App.vue'
+
 // Vue
 window.Vue = require('vue')
 
@@ -17,7 +20,7 @@ Vue.prototype.$http = axios
 import store from '@modules/store'
 
 // components
-Vue.component('app', require('./src/admin/App.vue').default)
+// Vue.component('app', require('./src/admin/App.vue').default)
 
 // filters
 import './src/filters/filters'
@@ -56,5 +59,6 @@ const app = new Vue({
     router: AdminRouter,
     store,
     i18n,
-    mixins: mixins
+    mixins: mixins,
+    render: h => h(App),
 })
