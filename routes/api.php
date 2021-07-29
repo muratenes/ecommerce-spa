@@ -20,9 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Auth
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
-    Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
-    Route::post('/me', [\App\Http\Controllers\Api\AuthController::class, 'me'])->middleware('auth:sanctum');
+    Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
+    Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
+    Route::post('me', [\App\Http\Controllers\Api\AuthController::class, 'me'])->middleware('auth:sanctum');
+    Route::delete('logout', [\App\Http\Controllers\Api\AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
 
 

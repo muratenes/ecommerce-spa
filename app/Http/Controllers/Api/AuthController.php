@@ -58,4 +58,17 @@ class AuthController extends ApiController
     {
         return $request->user();
     }
+
+    /**
+     * logout user
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function logout(Request $request)
+    {
+        auth()->user()->tokens()->delete();
+
+        return $this->success();
+    }
 }
