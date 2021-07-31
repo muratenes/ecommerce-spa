@@ -1,4 +1,4 @@
-import axios from '@/axios'
+import axios from '@admin/axios'
 
 const makeUrl = path => `/auth/${path}`
 

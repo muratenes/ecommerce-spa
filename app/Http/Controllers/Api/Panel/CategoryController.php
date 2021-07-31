@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Panel;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryController extends ApiController
 {
     /**
      * Display a listing of the resource.

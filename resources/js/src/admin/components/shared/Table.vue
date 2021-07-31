@@ -21,7 +21,7 @@
                 </vs-th>
 
                 <vs-th v-if="hasActionsSlot()">
-                    {{ ("message.actions") }}
+                    {{ $t("message.actions") }}
                 </vs-th>
             </template>
             <template slot-scope="{ data }">

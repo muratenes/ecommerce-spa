@@ -7,6 +7,10 @@ use App\Models\Product;
 
 class ProductController extends ApiController
 {
+    public function index(Product $product)
+    {
+        return Product::all();
+    }
 
     public function show(Product $product)
     {

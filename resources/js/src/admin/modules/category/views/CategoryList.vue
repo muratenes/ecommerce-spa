@@ -9,8 +9,14 @@
                     :columns="columns"
                     :perPageItem="2"
                 >
+
                     <template v-slot:created_at="{data}">
                         <p> {{ data.created_at|created_at }} </p>
+                    </template>
+                    <template v-slot:actions="{data}">
+                        <router-link :to="{name : 'admin.categories.show',params : {id : data.id}}">
+                            <i class="fa fa-edit"></i>
+                        </router-link>
                     </template>
 
                 </d-table>

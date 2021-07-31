@@ -6,6 +6,7 @@ export default {
     slug : "Url",
     created_at : "Oluşturma",
     image : "Görsel",
+    actions : "Eylemler",
     // modules
     category,
 
