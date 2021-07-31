@@ -13,4 +13,8 @@ export default {
         return axios.get(makeUrl(`slug/${slug}`))
     },
 
+    updateCategory(id,category) {
+        return axios.put(makeUrl(`${id}`),category)
+    },
+
 }

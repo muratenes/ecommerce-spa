@@ -10,32 +10,43 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Quick Example</h3>
+                                <h3 class="card-title">Quick Example - {{ submitStatus }} -- {{ $v.category.title.$error }}</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <div class="card-body">
-                                <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <label>Başlık</label>
-                                        <input type="text" class="form-control" placeholder="Başlık Giriniz" v-model="category.title">
+                            <form @submit.prevent="submit">
+                                <div class="card-body">
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label>Başlık</label>
+                                            <input type="text" class="form-control" v-bind:class="{ 'is-invalid': $v.category.title.$error, 'is-valid' :!$v.category.title.$error && $v.category.title.$dirty   }" placeholder="Başlık Giriniz"
+                                                   v-model="category.title">
+                                            <span class="error invalid-feedback" v-if="!$v.category.title.required">{{ $t('message.validations.this_field_required') }}</span>
+                                            <span class="error invalid-feedback" v-if="!$v.category.title.minLength"> {{ $t('message.validations.min_x_character', {count: $v.category.title.$params.minLength.min}) }} </span>
+                                            <span class="error invalid-feedback" v-if="!$v.category.title.maxLength"> {{ $t('message.validations.max_x_character', {count: $v.category.title.$params.maxLength.max}) }}</span>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>Slug</label>
+                                            <input type="text" class="form-control" v-bind:class="{ 'is-invalid': $v.category.slug.$error, 'is-valid' :!$v.category.slug.$error && $v.category.slug.$dirty   }" placeholder="Slug" v-model="category.slug">
+                                            <span class="error invalid-feedback" v-if="!$v.category.slug.required">{{ $t('message.validations.this_field_required') }}</span>
+                                            <span class="error invalid-feedback" v-if="!$v.category.slug.minLength"> {{ $t('message.validations.min_x_character', {count: $v.category.slug.$params.minLength.min}) }} </span>
+                                            <span class="error invalid-feedback" v-if="!$v.category.slug.maxLength"> {{ $t('message.validations.max_x_character', {count: $v.category.slug.$params.maxLength.max}) }}</span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Kısa Açıklama</label>
+                                            <input type="text" class="form-control" v-bind:class="{ 'is-invalid': $v.category.short_description.$error, 'is-valid' :!$v.category.short_description.$error && $v.category.short_description.$dirty   }"
+                                                   placeholder="Kısa Açıklama giriniz." v-model="category.short_description">
+                                            <span class="error invalid-feedback" v-if="!$v.category.short_description.maxLength"> {{ $t('message.validations.max_x_character', {count: $v.category.short_description.$params.maxLength.max}) }}</span>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label>Slug</label>
-                                        <input type="text" class="form-control" placeholder="Slug" v-model="category.slug">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Kısa Açıklama</label>
-                                        <input type="text" class="form-control" placeholder="Kısa Açıklama giriniz." v-model="category.short_description">
-                                    </div>
+
                                 </div>
-                            </div>
-                            <!-- /.card-body -->
-
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success">Kaydet</button>
-                            </div>
-
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">Kaydet</button>
+                                </div>
+                            </form>
                         </div>
                         <!-- /.card -->
                     </div>
@@ -50,7 +61,7 @@
 
 <script>
 import Breadcrumb from "../../../components/shared/Breadcrumb";
-import {mapActions} from "vuex";
+import {required, minLength, maxLength} from 'vuelidate/lib/validators'
 
 export default {
     name: "CategoryDetail",
@@ -59,13 +70,44 @@ export default {
     },
     data() {
         return {
-            category: []
+            category: [],
+            submitStatus: null
         }
     },
     methods: {
         async getCategoryById(id) {
             const {data} = await this.$store.dispatch('category/getCategoryById', id)
             this.category = data
+        },
+        async submit() {
+            this.$v.$touch()
+            if (this.$v.$invalid) {
+                this.submitStatus = 'ERROR'
+            } else {
+                try {
+                    const {data} = await this.$store.dispatch('category/updateCategory', {id: this.category.id, category: this.category})
+
+                } catch (e) {
+
+                }
+            }
+        }
+    },
+    validations: {
+        category: {
+            title: {
+                required,
+                minLength: minLength(2),
+                maxLength: maxLength(50)
+            },
+            slug: {
+                required,
+                minLength: minLength(2),
+                maxLength: maxLength(70)
+            },
+            short_description: {
+                maxLength: maxLength(255)
+            }
         }
     },
 

@@ -40,6 +40,11 @@ import messagesEN from './src/languages/en/message'
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 
+// Vue Validate
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+
+
 const messages = {
     en: { message: messagesEN },
     tr: { message: messagesTR }

@@ -7,6 +7,13 @@ export default {
     created_at : "Oluşturma",
     image : "Görsel",
     actions : "Eylemler",
+
+    // validations
+    validations : {
+      this_field_required : "Bu alan Gereklidir",
+      min_x_character : "En az {count} karakter olmalıdır.",
+      max_x_character : "En fazla {count} karakter olmalıdır."
+    },
     // modules
     category,
 

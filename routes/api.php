@@ -30,7 +30,7 @@ Route::group(['prefix' => 'panel'], function () {
     // Auth Required Routes
     Route::group(['middleware' => 'auth:sanctum'], function () {
         // categories
-        Route::resource('categories', App\Http\Controllers\Api\Panel\CategoryController::class)->only(['index', 'show']);
+        Route::resource('categories', App\Http\Controllers\Api\Panel\CategoryController::class)->only(['index', 'show', 'update']);
 
         // products
         Route::group(['prefix' => 'products'], function () {
