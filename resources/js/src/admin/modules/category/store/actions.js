@@ -29,6 +29,7 @@ export default {
         try {
             return await request.updateCategory(payload.id, payload.category)
         } catch (error) {
+            console.log(error.response.data);
             if (error.response) dispatch('error', error.response.data, {root: true})
         }
     },

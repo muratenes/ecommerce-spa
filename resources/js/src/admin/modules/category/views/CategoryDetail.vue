@@ -10,7 +10,7 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Quick Example - {{ submitStatus }} -- {{ $v.category.title.$error }}</h3>
+                                <h3 class="card-title">Category Detail</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
@@ -38,6 +38,14 @@
                                             <input type="text" class="form-control" v-bind:class="{ 'is-invalid': $v.category.short_description.$error, 'is-valid' :!$v.category.short_description.$error && $v.category.short_description.$dirty   }"
                                                    placeholder="Kısa Açıklama giriniz." v-model="category.short_description">
                                             <span class="error invalid-feedback" v-if="!$v.category.short_description.maxLength"> {{ $t('message.validations.max_x_character', {count: $v.category.short_description.$params.maxLength.max}) }}</span>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>İcon</label>
+                                            <input type="text" class="form-control" v-bind:class="{ 'is-invalid': $v.category.icon.$error, 'is-valid' :!$v.category.icon.$error && $v.category.icon.$dirty   }" placeholder="Başlık Giriniz"
+                                                   v-model="category.icon">
+                                            <span class="error invalid-feedback" v-if="!$v.category.icon.required">{{ $t('message.validations.this_field_required') }}</span>
+                                            <span class="error invalid-feedback" v-if="!$v.category.icon.minLength"> {{ $t('message.validations.min_x_character', {count: $v.category.icon.$params.minLength.min}) }} </span>
+                                            <span class="error invalid-feedback" v-if="!$v.category.icon.maxLength"> {{ $t('message.validations.max_x_character', {count: $v.category.icon.$params.maxLength.max}) }}</span>
                                         </div>
                                     </div>
 
@@ -82,13 +90,16 @@ export default {
         async submit() {
             this.$v.$touch()
             if (this.$v.$invalid) {
-                this.submitStatus = 'ERROR'
+                await this.$store.dispatch('error', {root: true, title: this.$t('message.validations.invalid_form')})
             } else {
                 try {
-                    const {data} = await this.$store.dispatch('category/updateCategory', {id: this.category.id, category: this.category})
-
+                    const response = await this.$store.dispatch('category/updateCategory', {id: this.category.id, category: this.category})
+                    if (response) {
+                        await this.$store.dispatch('success', {root: true})
+                    }
                 } catch (e) {
-
+                    alert(e)
+                    await this.$store.dispatch('error', {root: true, text: e.message})
                 }
             }
         }

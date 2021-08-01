@@ -45,6 +45,11 @@ import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)
 
 
+// Vue Toast Notification
+import Notifications from 'vue-notification'
+Vue.use(Notifications,{type : 'success'})
+
+// Vue Localization
 const messages = {
     en: { message: messagesEN },
     tr: { message: messagesTR }
