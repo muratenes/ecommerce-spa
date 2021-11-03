@@ -20,7 +20,7 @@ Vue.prototype.$http = axios
 import store from '@admin/modules/store'
 
 // components
-// Vue.component('app', require('./src/admin/App.vue').default)
+// Vue.component('x-input', require('./src/admin/components/XInput'))
 
 // filters
 import './src/filters/filters'

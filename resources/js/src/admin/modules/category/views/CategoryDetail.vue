@@ -2,7 +2,7 @@
     <div>
         <breadcrumb title="Category Detail"/>
         <!-- Main content -->
-        <section class="content">
+        <section class="content" v-if="category">
             <div class="container-fluid">
                 <div class="row">
                     <!-- left column -->
@@ -16,7 +16,8 @@
                             <!-- form start -->
                             <form @submit.prevent="submit">
                                 <div class="card-body">
-
+                                    <x-input label="Test Label" :inputData.sync="category.title" :instance="$v.category.title"/>
+                                    <p>parent : {{ category.title }}</p>
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
                                             <label>Başlık</label>
@@ -39,14 +40,14 @@
                                                    placeholder="Kısa Açıklama giriniz." v-model="category.short_description">
                                             <span class="error invalid-feedback" v-if="!$v.category.short_description.maxLength"> {{ $t('message.validations.max_x_character', {count: $v.category.short_description.$params.maxLength.max}) }}</span>
                                         </div>
-                                        <div class="form-group col-md-3">
-                                            <label>İcon</label>
-                                            <input type="text" class="form-control" v-bind:class="{ 'is-invalid': $v.category.icon.$error, 'is-valid' :!$v.category.icon.$error && $v.category.icon.$dirty   }" placeholder="Başlık Giriniz"
-                                                   v-model="category.icon">
-                                            <span class="error invalid-feedback" v-if="!$v.category.icon.required">{{ $t('message.validations.this_field_required') }}</span>
-                                            <span class="error invalid-feedback" v-if="!$v.category.icon.minLength"> {{ $t('message.validations.min_x_character', {count: $v.category.icon.$params.minLength.min}) }} </span>
-                                            <span class="error invalid-feedback" v-if="!$v.category.icon.maxLength"> {{ $t('message.validations.max_x_character', {count: $v.category.icon.$params.maxLength.max}) }}</span>
-                                        </div>
+<!--                                        <div class="form-group col-md-3">-->
+<!--                                            <label>İcon</label>-->
+<!--                                            <input type="text" class="form-control" v-bind:class="{ 'is-invalid': $v.category.icon.$error, 'is-valid' :!$v.category.icon.$error && $v.category.icon.$dirty   }" placeholder="Başlık Giriniz"-->
+<!--                                                   v-model="category.icon">-->
+<!--                                            <span class="error invalid-feedback" v-if="!$v.category.icon.required">{{ $t('message.validations.this_field_required') }}</span>-->
+<!--                                            <span class="error invalid-feedback" v-if="!$v.category.icon.minLength"> {{ $t('message.validations.min_x_character', {count: $v.category.icon.$params.minLength.min}) }} </span>-->
+<!--                                            <span class="error invalid-feedback" v-if="!$v.category.icon.maxLength"> {{ $t('message.validations.max_x_character', {count: $v.category.icon.$params.maxLength.max}) }}</span>-->
+<!--                                        </div>-->
                                     </div>
 
                                 </div>
@@ -70,16 +71,19 @@
 <script>
 import Breadcrumb from "../../../components/shared/Breadcrumb";
 import {required, minLength, maxLength} from 'vuelidate/lib/validators'
+import XInput from "../../../components/XInput";
 
 export default {
     name: "CategoryDetail",
     components: {
-        Breadcrumb
+        Breadcrumb,
+        XInput
     },
     data() {
         return {
-            category: [],
-            submitStatus: null
+            category: null,
+            submitStatus: null,
+            text : "denre"
         }
     },
     methods: {
