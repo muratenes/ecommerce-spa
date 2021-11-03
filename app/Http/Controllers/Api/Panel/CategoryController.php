@@ -41,7 +41,7 @@ class CategoryController extends ApiController
     {
         $validated = $request->validate([
             'title' => 'required|max:50|min:2',
-            'slug' => 'required|max:70|min:2',
+            'slug' => 'required|max:70|min:2|unique:categories,slug,'.$category->id,
             'short_description' => 'nullable|max:255'
         ]);
         $category->update($validated);
