@@ -9,7 +9,7 @@ class ProductController extends ApiController
 {
     public function index(Product $product)
     {
-        return Product::all();
+        return Product::paginate();
     }
 
     public function show(Product $product)

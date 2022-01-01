@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'panel'], function () {
+    Route::get('productsx', [\App\Http\Controllers\Api\ProductController::class, 'index']);
     // Auth
     Route::group(['prefix' => 'auth'], function () {
         Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
@@ -34,7 +35,7 @@ Route::group(['prefix' => 'panel'], function () {
 
         // products
         Route::group(['prefix' => 'products'], function () {
-            Route::get('', [\App\Http\Controllers\Api\ProductController::class, 'index']);
+            Route::get('', [\App\Http\Controllers\Api\ProductController::class, 'index'])->name('panel.products.index');
             Route::get('{product:slug}', [\App\Http\Controllers\Api\ProductController::class, 'show']);
             Route::get('getProductsByCategory/{category:slug}', [\App\Http\Controllers\Api\ProductController::class, 'getProductsByCategory']);
         });

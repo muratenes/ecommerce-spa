@@ -30,9 +30,10 @@ class ProductTest extends TestCase
 
         $user = User::first();
         $response = $this->actingAs($user)
-            ->get('/api/panel/products');
+            ->get(route('panel.products.index'));
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+            ->assertJsonStructure($this->schemas['pagination']);
     }
 
     /**
